@@ -1,0 +1,5 @@
+.gallery__wrap {
+  padding: 17px 15px 18px 21px;
+  display: flex;
+  justify-content: space-between;
+}

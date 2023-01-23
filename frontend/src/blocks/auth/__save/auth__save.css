@@ -1,0 +1,18 @@
+.auth__save {
+    padding: 14px 0;
+    margin-top: 201px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #000;    
+    background: #fff;
+    border-radius: 2px;
+}
+
+.auth__save:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}

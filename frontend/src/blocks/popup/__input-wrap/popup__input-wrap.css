@@ -1,0 +1,10 @@
+.popup__input-wrap {
+  position: relative;
+  min-width: 238px;
+}
+
+@media screen and (min-width:1000px) {
+  .popup__input-wrap {
+    min-width: 358px;
+  }
+}

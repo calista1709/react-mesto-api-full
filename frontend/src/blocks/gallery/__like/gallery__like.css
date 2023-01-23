@@ -1,0 +1,14 @@
+.gallery__like {
+  min-width: 22px;
+  min-height: 19px;
+  margin: 5px 5px 3px 0;
+  padding: 0;
+  border: none;
+  background: no-repeat center url(../../../images/like.svg);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gallery__like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
