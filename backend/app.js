@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const auth = require('./middlewares/auth');
 const usersRouter = require('./routes.js/users');
 const cardsRouter = require('./routes.js/cards');
@@ -16,6 +17,7 @@ const { PORT = 3001 } = process.env;
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(requestLogger);
 app.post('/signin', signInCelebrate, login);
