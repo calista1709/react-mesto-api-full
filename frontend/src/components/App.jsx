@@ -37,11 +37,11 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (!token) return;
-    checkToken(token)
+    checkToken()
       .then((res) => {
         setIsLoggedIn(true);
         navigate("/");
-        setUserEmail(res.data.email);
+        setUserEmail(res.email);
       })
       .catch((err) => {
         console.log(err);
@@ -50,6 +50,8 @@ function App() {
 
   // Загрузка данных с сервера о пользователе
   useEffect(() => {
+    const token = localStorage.getItem('jwt');
+    if (!token) return;
     api.getUserInfo()
       .then((res) => {
         setCurrentUser(res);
@@ -57,10 +59,12 @@ function App() {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   // Загрузка данных с сервера о карточках
   useEffect(() => {
+    const token = localStorage.getItem('jwt');
+    if (!token) return;
     api.getInitialCards()
       .then((res) => {
         setCards(res);
@@ -68,7 +72,7 @@ function App() {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   // Функция открытия попапа редактирования аватара
   function handleEditAvatarClick() {
@@ -195,7 +199,7 @@ function App() {
 
   // Функция выхода из аккаунта пользователя
   function handleLogout() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('jwt'); 
     setIsLoggedIn(false);
   }
 

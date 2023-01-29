@@ -1,4 +1,4 @@
-const BASE_URL = 'https://auth.nomoreparties.co';
+const BASE_URL = 'https://api.calista709.nomoredomainsclub.ru';
 
 function checkResOk(res) {
   if (res.ok) {
@@ -35,12 +35,12 @@ export function authorize(password, email) {
     .then(checkResOk)
 };
 
-export function checkToken(token) {
+export function checkToken() {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
     },
   })
     .then(checkResOk)

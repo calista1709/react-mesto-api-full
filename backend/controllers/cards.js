@@ -41,17 +41,20 @@ module.exports.deleteCardById = (req, res, next) => {
       return next(new ForbiddenError(FORBIDDEN_MESSAGE));
     }
     card.remove(() => res.send({ message: DELETE_MESSAGE }));
-  });
+  })
+    .populate(['owner', 'likes']);
 };
 
 module.exports.addLikeToCard = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId, { $addToSet: { likes: req.user._id } }, { new: true })
+    .populate(['owner', 'likes'])
     .then((card) => checkDoesDataExist(card, res, card))
     .catch((err) => checkValidationOrCastError(err, next));
 };
 
 module.exports.deleteLikeFromCard = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId, { $pull: { likes: req.user._id } }, { new: true })
+    .populate(['owner', 'likes'])
     .then((card) => checkDoesDataExist(card, res, card))
     .catch((err) => checkValidationOrCastError(err, next));
 };

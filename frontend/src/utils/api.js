@@ -12,11 +12,11 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._host}/users/me`, {
+    return fetch(`${this._host}/users/me`, { 
       headers: this._headers
     })
       .then(this._getJsonOrError);
-  }
+  }  
 
   setUserInfo(newInfo) {
     return fetch(`${this._host}/users/me`, {
@@ -76,11 +76,12 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-47',
+  baseUrl: 'https://api.calista709.nomoredomainsclub.ru',
   headers: {
-    authorization: 'fb096cda-3fa8-438f-8ed5-03045e014a70',
-    'Content-Type': 'application/json'
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
   }
 });
 
 export default api;
+
