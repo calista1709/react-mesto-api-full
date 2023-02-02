@@ -1,3 +1,5 @@
+import { apiConfig } from "./constants";
+
 class Api {
   constructor(options) {
     this._host = options.baseUrl;
@@ -75,13 +77,7 @@ class Api {
   }
 }
 
-const api = new Api({
-  baseUrl: 'https://api.calista709.nomoredomainsclub.ru',
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
-  }
-});
+const api = new Api(apiConfig);
 
 export default api;
 

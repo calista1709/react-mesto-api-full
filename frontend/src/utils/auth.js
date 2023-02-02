@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.calista709.nomoredomainsclub.ru';
+import { BASE_URL } from "./constants";
 
 function checkResOk(res) {
   if (res.ok) {
